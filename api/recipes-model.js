@@ -10,6 +10,14 @@ const getRecipes = () => {
 
 // should return a list of all ingredients and quantities for a given recipe
 const getShoppingList = (recipe_id) => {
+    return db({ri: 'recipes_ingredients'})
+        .join({i: 'ingredients'}, 'i.id', "ri.ingredient_id")
+        .where('recipe_id', recipe_id)
+        .select(
+            'ri.recipe_id',
+            {ingredient: 'i.name'},
+            'ri.quantity'
+            )
 
 }
 
