@@ -22,8 +22,9 @@ const getShoppingList = (recipe_id) => {
 }
 
 // should return a list of step by step instructions for preparing a recipe
-const getInstructions = (recipe_id) = {
-
+const getInstructions = (recipe_id) => {
+    return db({s: 'steps'})
+        .select('*')
 }
 
 module.exports = {

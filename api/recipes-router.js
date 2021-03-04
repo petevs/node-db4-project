@@ -22,4 +22,6 @@ router.get('/recipes/:id/shoppingList', async ( req, res ) => {
     }
 })
 
+router.get('/recipes/:id/instructions')
+
 module.exports = router
