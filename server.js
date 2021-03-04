@@ -1,5 +1,6 @@
 const express = require('express')
 const helmet = require('helmet')
+const recipesRouter = require('./api/recipes-router')
 
 const server = express()
 
@@ -11,5 +12,6 @@ server.get('/', ( req, res ) => {
         message: "hi there!"
     })
 } )
+server.use('/api', recipesRouter)
 
 module.exports = server
