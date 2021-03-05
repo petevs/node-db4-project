@@ -23,12 +23,22 @@ const getShoppingList = (recipe_id) => {
 
 // should return a list of step by step instructions for preparing a recipe
 const getInstructions = (recipe_id) => {
-    return db({s: 'steps'})
+    return db('steps')
+        .select('*')
+        .where('recipe_id', recipe_id)
+}
+
+//get recipes with ingredients
+const getRecipesByIngredient = (ingredient_id) => {
+    return db({ri: 'recipes_ingredients'})
+        .join({r: 'recipes'}, 'r.id', 'ri.recipe_id')
+        .where('ingredient_id', ingredient_id)
         .select('*')
 }
 
 module.exports = {
     getRecipes,
     getShoppingList,
-    getInstructions
+    getInstructions,
+    getRecipesByIngredient
 }
